@@ -10,8 +10,8 @@ export default async function Page() {
   console.log({ isDraftModePage: isEnabled });
 
   const client = createClient({
-    space: "master-clone",
-    environment: process.env.CONTENTFUL_ENVIRONMENT_ID ?? "",
+    space: process.env.CONTENTFUL_SPACE_ID ?? "",
+    environment: "master-clone",
     accessToken: process.env.CONTENTFUL_DELIVERY_PREVIEW_TOKEN ?? "",
     host: "preview.contentful.com",
   });
