@@ -10,6 +10,7 @@ export interface BlockProps {
 }
 
 export const Block: React.FC<BlockProps> = ({ isDraftMode, data }) => {
+  console.log({ isDraftModeBlock: isDraftMode });
   console.log({ data });
   const updateData = useContentfulLiveUpdates(data, { locale: PREVIEW_LOCALE });
   console.log({ updateData });

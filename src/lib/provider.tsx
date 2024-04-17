@@ -13,6 +13,7 @@ export const AppProvider: React.FC<PropsWithChildren<AppProviderProps>> = ({
   isDraftMode,
   children,
 }) => {
+  console.log({ isDraftModeProvider: isDraftMode });
   return (
     <ContentfulLivePreviewProvider
       locale={locale}

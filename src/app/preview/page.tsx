@@ -6,6 +6,9 @@ import { PREVIEW_LOCALE } from "@/lib/locale";
 
 export default async function Page() {
   const { isEnabled } = draftMode();
+
+  console.log({ isDraftModePage: isEnabled });
+
   const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID ?? "",
     environment: process.env.CONTENTFUL_ENVIRONMENT_ID ?? "",
