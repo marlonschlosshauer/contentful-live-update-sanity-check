@@ -21,7 +21,6 @@ export default async function Page() {
   const data = await client.getEntries({
     locale: PREVIEW_LOCALE,
     content_type: "textImage",
-    limit: 1,
   });
 
   const [block] = data.items.filter((item) => item.sys.id === id);
