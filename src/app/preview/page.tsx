@@ -2,6 +2,7 @@ import React from "react";
 import { Block } from "@/components/Block";
 import { createClient } from "contentful";
 import { draftMode } from "next/headers";
+import { PREVIEW_LOCALE } from "@/lib/locale";
 
 export default async function Page() {
   const { isEnabled } = draftMode();
@@ -15,7 +16,7 @@ export default async function Page() {
   const id = "7ovNZRxs7wECVXNyroLbRb";
 
   const data = await client.getEntries({
-    locale: "de",
+    locale: PREVIEW_LOCALE,
     content_type: "textImage",
   });
 
