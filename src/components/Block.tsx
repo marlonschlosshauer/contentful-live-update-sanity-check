@@ -3,43 +3,40 @@ import React from "react";
 import { useContentfulLiveUpdates } from "@contentful/live-preview/react";
 import { inspectorProps } from "@/lib/inspector";
 
-export const Block: React.FC<any> = (raw) => {
-  const data = useContentfulLiveUpdates(raw, { locale: "de" });
+export interface BlockProps {
+  isDraftMode: boolean;
+  data: any;
+}
 
-  if (!data) {
+export const Block: React.FC<BlockProps> = ({ isDraftMode, data }) => {
+  console.log({ data });
+  const updateData = useContentfulLiveUpdates(data, { locale: "de" });
+  console.log({ updateData });
+
+  if (!updateData) {
     return null;
   }
 
-  const fields = data.fields;
+  const fields = updateData.fields;
 
   if (!fields) {
     return null;
   }
 
-  const { headline, content } = fields;
+  const { headline } = fields;
 
   return (
     <div>
       <h1
         {...inspectorProps({
-          entryId: data.sys.id,
+          entryId: updateData.sys.id,
           fieldId: "headline",
           locale: "de",
-          draftMode: true,
+          draftMode: isDraftMode,
         })}
       >
         {headline}
       </h1>
-      <p
-        {...inspectorProps({
-          entryId: data.sys.id,
-          fieldId: "content",
-          locale: "de",
-          draftMode: true,
-        })}
-      >
-        {JSON.stringify(content)}
-      </p>
     </div>
   );
 };
